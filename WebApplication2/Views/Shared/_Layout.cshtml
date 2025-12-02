@@ -1,0 +1,259 @@
+﻿@{
+    Layout = null;
+    var title = ViewBag.Title ?? "BaiChain";
+    bool isThemePage = ViewBag.TestPage != null && (bool)ViewBag.TestPage;
+    var description = ViewBag.MetaDescription ?? "BaiChain — цифровые продукты, блокчейн и консалтинг.";
+    var themeCookie = Context.Request.Cookies["bc-theme"];
+    var initialTheme = string.IsNullOrWhiteSpace(themeCookie) ? "dark" : themeCookie;
+    var initialThemeLabel = initialTheme == "light" ? "Светлая" : "Тёмная";
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <title>@title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="@description" />
+    <meta property="og:title" content="@title" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:type" content="website" />
+
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
+
+    @* Подключаем custom-theme.css только на странице с темами *@
+    @if (isThemePage)
+    {
+        <link rel="stylesheet" href="~/css/custom-theme.css" asp-append-version="true" />
+    }
+
+    @RenderSection("Head", required: false)
+</head>
+
+<body class="baichain-body" data-theme="@initialTheme">
+    <header class="bc-header">
+        <div class="bc-container bc-header-inner">
+            <div class="bc-logo">
+                <a href="@Url.Action("Index", "Home")" class="bc-logo-link">
+                    <img src="~/src/logo-baichein-Photoroom.png" alt="БАЙЧЕЙН" class="bc-logo-img" />
+                    <span class="bc-logo-text">
+                        BaiChain
+                    </span>
+                </a>
+            </div>
+
+            <nav class="bc-nav">
+                <a href="@Url.Action("Index", "Home")">Главная</a>
+                <a href="@Url.Action("Services", "Home")">Услуги</a>
+                <a href="@Url.Action("BlockchainPlatform", "Home")">Блокчейн-решения</a>
+                <a href="@Url.Action("About", "Home")">О компании</a>
+            </nav>
+
+            <div class="bc-header-right">
+                <span class="bc-country">Россия</span>
+                <a href="#" class="bc-link-text">Связаться с нами</a>
+
+                @* Кнопка "Войти" отображается только на обычных страницах *@
+                @if (!isThemePage)
+                {
+                    <a href="#" class="bc-btn bc-btn-small">Войти</a>
+                }
+
+                @* Переключатель темы — в шапке *@
+                @if (isThemePage)
+                {
+                    <button type="button" id="bc-theme-toggle" class="bc-btn bc-theme-toggle" data-theme-state="@initialTheme">
+                        <span class="bc-theme-toggle-label">Тема:</span>
+                        <span class="bc-theme-toggle-state" data-light="Светлая" data-dark="Тёмная">@initialThemeLabel</span>
+                    </button>
+                }
+            </div>
+        </div>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="bc-footer">
+        <div class="bc-container bc-footer-top">
+            <div class="bc-footer-logo">BaiChain</div>
+            <div class="bc-footer-social">
+                <!-- Монохромная чёрная кнопка -->
+                <a href="https://vk.com/club234048050" target="_blank" class="bc-social-link" title="VK">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                        <rect x="3" y="3" width="18" height="18" rx="6" />
+                        <text x="12" y="15" text-anchor="middle" font-size="10" font-family="Arial, sans-serif" font-weight="700" fill="#ffffff">
+                            vk
+                        </text>
+                    </svg>
+                </a>
+
+
+                <a href="https://t.me/yourchannel" target="_blank" class="bc-social-link" title="Telegram">
+                    <!-- Telegram icon -->
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9.999 15.2 9.9 19c.4 0 .6-.2.8-.4l2-1.9 4.1 3c.8.4 1.4.2 1.6-.8l3-14.2c.3-1-.4-1.5-1.2-1.2L2.6 9.4c-1 .4-1 1-.2 1.2l4.9 1.5 11.4-7.2c.5-.3.9-.1.5.2" />
+                    </svg>
+                </a>
+
+                <a href="https://wa.me/79990000000" target="_blank" class="bc-social-link" title="WhatsApp">
+                    <!-- WhatsApp icon -->
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12.04 2C6.59 2 2.18 6.42 2.18 11.87c0 2.1.62 4.02 1.69 5.64L2 22l4.62-1.84a10.01 10.01 0 0 0 5.42 1.71c5.45 0 9.87-4.42 9.87-9.87S17.49 2 12.04 2zm0 17.74c-1.74 0-3.39-.52-4.81-1.5l-.34-.22-2.74 1.09.73-2.84-.24-.36a7.78 7.78 0 1 1 7.4 4.83zm4.31-5.62c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17a7.18 7.18 0 0 1-1.33-1.65c-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2 0 1.18.86 2.32 1 2.48.12.16 1.7 2.6 4.2 3.65.59.25 1.06.4 1.42.52.6.19 1.15.16 1.58.1.48-.07 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z" />
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="bc-container bc-footer-columns">
+            <div class="bc-footer-col">
+                <h4>Навигация</h4>
+                <a href="@Url.Action("Index", "Home")">Главная</a>
+                <a href="@Url.Action("Services", "Home")">Услуги</a>
+                <a href="@Url.Action("BlockchainPlatform", "Home")">Блокчейн-решения</a>
+                <a href="@Url.Action("About", "Home")">О компании</a>
+            </div>
+
+            <div class="bc-footer-col">
+                <h4>Услуги</h4>
+                <a href="@Url.Action("Services", "Home")">Разработка мобильных приложений</a>
+                <a href="@Url.Action("Services", "Home")">Разработка веб-приложений</a>
+                <a href="@Url.Action("Services", "Home")">Создание чат-ботов</a>
+                <a href="@Url.Action("Services", "Home")">Автоматизация учебных центров</a>
+            </div>
+
+            <div class="bc-footer-col">
+                <h4>Проекты</h4>
+                <a href="@Url.Action("BlockchainPlatform", "Home")">Цифровые паспорта спортсменов</a>
+                <a href="@Url.Action("BlockchainPlatform", "Home")">Токенизация достижений</a>
+                <a href="@Url.Action("BlockchainPlatform", "Home")">Блокчейн-платформа</a>
+            </div>
+
+            <div class="bc-footer-col">
+                <h4>Компания</h4>
+                <a href="@Url.Action("About", "Home")">О нас</a>
+                <a href="@Url.Action("Privacy", "Home")">Политика конфиденциальности</a>
+                <a href="@Url.Action("Privacy", "Home")">Условия использования</a>
+            </div>
+        </div>
+
+        <div class="bc-container bc-footer-bottom">
+            <div class="bc-footer-bottom-content">
+                <span>&copy; @DateTime.Now.Year BaiChain. Все права защищены.</span>
+                <div class="bc-footer-bottom-links">
+                    <a href="@Url.Action("Privacy", "Home")">Политика конфиденциальности</a>
+                    <span class="bc-footer-separator">•</span>
+                    <a href="@Url.Action("Privacy", "Home")">Условия использования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+    @* Глобальный скрипт управления темой *@
+    <script>
+        (function () {
+            var storageKey = 'bc-theme';
+            var cookieName = 'bc-theme';
+            var body = document.body;
+
+            // Функции для работы с cookie (определяем первыми)
+            function getCookie(name) {
+                try {
+                    var nameEQ = name + '=';
+                    var ca = document.cookie.split(';');
+                    for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                        if (c.indexOf(nameEQ) === 0) {
+                            return decodeURIComponent(c.substring(nameEQ.length, c.length));
+                        }
+                    }
+                    return null;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            function setCookie(value) {
+                var expires = new Date(Date.now() + 31536000000).toUTCString(); // 1 год
+                document.cookie = cookieName + '=' + value + ';expires=' + expires + ';path=/;SameSite=Lax';
+            }
+
+            function applyTheme(theme, persist) {
+                if (!theme || (theme !== 'light' && theme !== 'dark')) {
+                    theme = 'dark';
+                }
+                
+                body.setAttribute('data-theme', theme);
+
+                var toggle = document.getElementById('bc-theme-toggle');
+                if (toggle) {
+                    toggle.setAttribute('data-theme-state', theme);
+                    
+                    var stateEl = toggle.querySelector('.bc-theme-toggle-state');
+                    if (stateEl) {
+                        var label = theme === 'light'
+                            ? stateEl.getAttribute('data-light')
+                            : stateEl.getAttribute('data-dark');
+                        stateEl.textContent = label || (theme === 'light' ? 'Светлая' : 'Тёмная');
+                    }
+                }
+
+                if (persist !== false) {
+                    localStorage.setItem(storageKey, theme);
+                    setCookie(theme);
+                }
+            }
+
+            function initTheme() {
+                // Инициализация темы: сначала проверяем query параметр, потом хранилища
+                var urlParams = new URLSearchParams(window.location.search);
+                var queryTheme = urlParams.get('theme');
+                var storedTheme = queryTheme || localStorage.getItem(storageKey) || getCookie(cookieName) || body.getAttribute('data-theme') || 'dark';
+                
+                // Если тема из query параметра, сохраняем её
+                if (queryTheme && (queryTheme === 'light' || queryTheme === 'dark')) {
+                    applyTheme(queryTheme, true);
+                } else {
+                    applyTheme(storedTheme, false);
+                }
+
+                // Сохраняем в хранилищах, если их там нет
+                if (!localStorage.getItem(storageKey)) {
+                    localStorage.setItem(storageKey, storedTheme);
+                }
+                if (!getCookie(cookieName)) {
+                    setCookie(storedTheme);
+                }
+
+                // Обработчик клика на кнопку переключения
+                var toggle = document.getElementById('bc-theme-toggle');
+                if (toggle) {
+                    toggle.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var currentTheme = body.getAttribute('data-theme') || 'dark';
+                        var nextTheme = currentTheme === 'light' ? 'dark' : 'light';
+                        applyTheme(nextTheme, true);
+                    });
+                }
+            }
+
+            // Инициализируем сразу (если DOM уже загружен) или ждём загрузки
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initTheme);
+            } else {
+                initTheme();
+            }
+        })();
+    </script>
+</body>
+</html>

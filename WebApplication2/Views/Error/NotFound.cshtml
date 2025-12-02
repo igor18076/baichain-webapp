@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Страница не найдена – BaiChain";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TestPage = true;
+}
+
+<section class="bc-error bc-animate">
+    <div class="bc-container bc-error-inner">
+        <div class="bc-error-main">
+            <div class="bc-error-code">404</div>
+            <h1 class="bc-error-title">Кажется, тут пусто</h1>
+            <p class="bc-error-text">
+                Мы не нашли страницу, которую вы искали. Возможно, она была перемещена,
+                удалена или вы просто опечатались в адресе.
+            </p>
+
+            <div class="bc-error-actions">
+                <a href="@Url.Action("Index", "Home")" class="bc-btn bc-btn-primary">
+                    На главную
+                </a>
+                <a href="@Url.Action("Services", "Home")" class="bc-btn bc-btn-outline">
+                    Посмотреть услуги
+                </a>
+            </div>
+        </div>
+
+        <div class="bc-error-visual">
+            <div class="bc-error-blob">
+                <span class="bc-error-ghost">:(</span>
+            </div>
+            <p class="bc-error-hint">
+                Но вы всегда можете начать с главной страницы.
+            </p>
+        </div>
+    </div>
+</section>

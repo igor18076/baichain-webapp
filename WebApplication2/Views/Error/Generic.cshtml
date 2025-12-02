@@ -1,0 +1,37 @@
+﻿@{
+    var statusCode = ViewBag.StatusCode ?? 0;
+    ViewBag.Title = "Ошибка – BaiChain";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TestPage = true;
+}
+
+<section class="bc-error bc-animate">
+    <div class="bc-container bc-error-inner">
+        <div class="bc-error-main">
+            <div class="bc-error-code">@statusCode</div>
+            <h1 class="bc-error-title">Непредвиденная ошибка</h1>
+            <p class="bc-error-text">
+                Возникла ошибка при обработке запроса. Если вы видите это сообщение постоянно,
+                пожалуйста, сообщите нам об этом.
+            </p>
+
+            <div class="bc-error-actions">
+                <a href="@Url.Action("Index", "Home")" class="bc-btn bc-btn-primary">
+                    На главную
+                </a>
+                <a href="@Url.Action("About", "Home")" class="bc-btn bc-btn-outline">
+                    О компании BaiChain
+                </a>
+            </div>
+        </div>
+
+        <div class="bc-error-visual">
+            <div class="bc-error-blob bc-error-blob-generic">
+                <span class="bc-error-ghost">?</span>
+            </div>
+            <p class="bc-error-hint">
+                Код ошибки: @statusCode
+            </p>
+        </div>
+    </div>
+</section>

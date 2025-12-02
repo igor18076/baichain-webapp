@@ -1,0 +1,12 @@
+@{
+    ViewBag.Title = "Доступ запрещён";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TestPage = true;
+}
+
+<section class="bc-container bc-error-page">
+    <h1 class="bc-section-title">403 — Доступ запрещён</h1>
+    <p>У вас нет прав для просмотра этой страницы. Если вы считаете, что это ошибка, свяжитесь с администратором сайта.</p>
+    <a asp-controller="Home" asp-action="Index" class="bc-btn bc-btn-primary">На главную</a>
+</section>
+

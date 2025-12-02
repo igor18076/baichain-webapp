@@ -1,0 +1,216 @@
+﻿@model WebApplication2.Models.ContactFormViewModel
+@{
+    ViewBag.Title = "BaiChain — главная";
+    ViewBag.MetaDescription = "BaiChain — команда, которая создаёт цифровые продукты, чат-ботов и блокчейн-решения.";
+    ViewBag.TestPage = true;
+    bool showKitten = ViewBag.ShowKittenThanks != null && (bool)ViewBag.ShowKittenThanks;
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/css/custom-theme.css" asp-append-version="true" />
+}
+
+<main>
+    <!-- Hero -->
+    <section class="bc-hero bc-animate test-hero no-pad">
+        <div style="position:relative;overflow:hidden;">
+
+            <!-- Видео для тёмной темы -->
+            <video autoplay muted loop playsinline class="bc-hero-video bc-video-dark">
+                <source src="~/src/flow2.mp4" type="video/mp4" />
+            </video>
+
+            <!-- Видео для светлой темы -->
+            <video autoplay muted loop playsinline class="bc-hero-video bc-video-light">
+                <source src="~/src/flow.mp4" type="video/mp4" />
+            </video>
+
+            <div style="position:relative;z-index:2;">
+                <div class="bc-container bc-hero-inner">
+                    <div class="bc-hero-text">
+                        <h1>BaiChain – ваш проводник<br />в цифровой мир</h1>
+                        <p class="bc-hero-sub">
+                            Помогаем компаниям внедрять цифровые продукты, автоматизировать процессы и использовать блокчейн-технологии без лишней сложности.
+                        </p>
+                        <a href="#contact" class="bc-btn bc-btn-primary bc-btn-hero">Обсудить проект</a>
+                        <div style="height:18px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="bc-services">
+        <div class="bc-container">
+            <h2 class="bc-section-title">Предоставляемые услуги</h2>
+            <div class="bc-services-grid">
+                <article class="bc-service-card">
+                    <div class="bc-service-header">
+                        <div class="bc-service-title">Мобильные приложения</div>
+                    </div>
+                    <div class="bc-service-image">
+                        <img src="~/src/phone1.png" alt="" loading="lazy" decoding="async" />
+                    </div>
+                </article>
+                <article class="bc-service-card">
+                    <div class="bc-service-header">
+                        <div class="bc-service-title">Telegram-боты</div>
+                    </div>
+                    <div class="bc-service-image">
+                        <img src="~/src/chatbot.png" alt="" loading="lazy" decoding="async" />
+                    </div>
+                </article>
+                <article class="bc-service-card">
+                    <div class="bc-service-header">
+                        <div class="bc-service-title">E-learning</div>
+                    </div>
+                    <div class="bc-service-image">
+                        <img src="~/src/elearning.png" alt="" loading="lazy" decoding="async" />
+                    </div>
+                </article>
+                <article class="bc-service-card">
+                    <div class="bc-service-header">
+                        <div class="bc-service-title">Веб-приложения</div>
+                    </div>
+                    <div class="bc-service-image">
+                        <img src="~/src/webrazrabotka.png" alt="" loading="lazy" decoding="async" />
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why -->
+    <section class="bc-why bc-animate">
+        <div class="bc-container">
+            <h2 class="bc-section-title">Почему мы?</h2>
+
+            <div class="bc-why-item bc-why-item-open">
+                <div class="bc-why-header">
+                    <span class="bc-why-number-circle">1</span>
+                    <span class="bc-why-text">Работаем прозрачно и по срокам</span>
+                    <span class="bc-why-toggle">▸</span>
+                </div>
+                <div class="bc-why-body">
+                    <p>Фиксируем задачи, сроки и бюджет до старта. Регулярно показываем промежуточный результат и даём понятные отчёты.</p>
+                </div>
+            </div>
+
+            <div class="bc-why-item">
+                <div class="bc-why-header">
+                    <span class="bc-why-number-circle">2</span>
+                    <span class="bc-why-text">Погружаемся в бизнес заказчика</span>
+                    <span class="bc-why-toggle">▸</span>
+                </div>
+                <div class="bc-why-body">
+                    <p>Перед разработкой разбираемся в процессах, аудитории и целях проекта.</p>
+                </div>
+            </div>
+
+            <div class="bc-why-item">
+                <div class="bc-why-header">
+                    <span class="bc-why-number-circle">3</span>
+                    <span class="bc-why-text">Технологический стек под задачу</span>
+                    <span class="bc-why-toggle">▸</span>
+                </div>
+                <div class="bc-why-body">
+                    <p>Используем проверенные технологии и подбираем архитектуру под нагрузку и рост.</p>
+                </div>
+            </div>
+
+            <div class="bc-why-item">
+                <div class="bc-why-header">
+                    <span class="bc-why-number-circle">4</span>
+                    <span class="bc-why-text">Сопровождаем после запуска</span>
+                    <span class="bc-why-toggle">▸</span>
+                </div>
+                <div class="bc-why-body">
+                    <p>Помогаем с эксплуатацией, аналитикой, развитием продукта и обучением команды.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="bc-contact" id="contact">
+        <div class="bc-container">
+            <div class="bc-contact-inner">
+                <div class="bc-contact-text">
+                    <h2>Хотите обсудить детали?</h2>
+                    <p>
+                        Расскажите о своей задаче — подберём решение, оценим сроки и бюджет, а при необходимости
+                        поможем сформулировать техническое задание.
+                    </p>
+                    @if (ViewBag.ContactSuccess != null && (bool)ViewBag.ContactSuccess)
+                    {
+                        <p class="bc-contact-alert bc-contact-alert-success">
+                            Ваша заявка отправлена. Мы свяжемся с вами.
+                        </p>
+                    }
+                    @if (ViewBag.ContactError != null)
+                    {
+                        <p class="bc-contact-alert bc-contact-alert-error">
+                            @ViewBag.ContactError
+                        </p>
+                    }
+                </div>
+
+                <div class="bc-contact-form-wrapper">
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "bc-contact-form", autocomplete = "off" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="bc-form-row">
+                            @Html.TextBoxFor(m => m.Name, new { placeholder = "Имя*", @class = "bc-input", autocomplete = "name" })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="bc-form-row bc-form-row-2col">
+                            <div>
+                                @Html.TextBoxFor(m => m.Phone, new { type = "tel", placeholder = "Телефон*", @class = "bc-input", autocomplete = "tel" })
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            </div>
+                            <div>
+                                @Html.TextBoxFor(m => m.Email, new { type = "email", placeholder = "Email*", @class = "bc-input", autocomplete = "email" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="bc-form-row">
+                            @Html.TextAreaFor(m => m.Message, 4, 40, new { placeholder = "Ваш вопрос*", @class = "bc-input bc-textarea" })
+                            @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+                        </div>
+
+                        <label class="bc-checkbox">
+                            @Html.CheckBoxFor(m => m.Agree)
+                            <span>Я даю согласие на обработку персональных данных в порядке и на условиях, указанных в Политике.</span>
+                        </label>
+
+                        <button type="submit" class="bc-btn bc-btn-primary">Отправить</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thanks modal -->
+    <div id="bc-thanks-overlay" class="bc-thanks-overlay @(showKitten ? "is-visible" : "")">
+        <div class="bc-thanks-backdrop"></div>
+        <div class="bc-thanks-modal">
+            <button type="button" class="bc-thanks-close" aria-label="Закрыть">✕</button>
+            <div class="bc-thanks-image">
+                <img src="~/src/kotik.jpg" alt="" loading="lazy" decoding="async" />
+            </div>
+            <div class="bc-thanks-text">
+                <h3>Спасибо за заявку 💙</h3>
+                <p>Мы всё получили и скоро свяжемся с вами.</p>
+                <button type="button" class="bc-btn bc-btn-primary bc-thanks-ok">Окак, хорошо</button>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+}

@@ -1,0 +1,95 @@
+@{
+    ViewBag.Title = "Услуги BaiChain";
+    ViewBag.MetaDescription = "Услуги BaiChain: мобильные приложения, веб-разработка, Telegram-боты и блокчейн.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TestPage = true; // чтобы _Layout подключил custom-theme.css
+    bool dark = Context.Request.Query.ContainsKey("theme") && Context.Request.Query["theme"] == "dark";
+}
+
+<main>
+
+    <section class="bc-services-hero bc-animate">
+        <div class="bc-container bc-services-hero-inner">
+            <h1>Услуги</h1>
+            <p class="bc-services-hero-sub">
+                От аудита и дизайна до разработки и поддержки цифровых продуктов, включая блокчейн-решения под ключ.
+            </p>
+            <a asp-controller="Home" asp-action="Index" asp-fragment="contact" class="bc-btn bc-btn-primary">Обсудить проект</a>
+        </div>
+    </section>
+
+    <section class="bc-services-list bc-animate bc-animate-delay-1">
+        <div class="bc-container">
+            <h2 class="bc-section-title">Что мы делаем</h2>
+            <div class="bc-services-list-grid">
+                <article class="bc-service-item">
+                    <h3>Мобильные приложения</h3>
+                    <p>Нативная и кроссплатформенная разработка для iOS и Android.</p>
+                </article>
+
+                <article class="bc-service-item">
+                    <h3>Telegram-боты</h3>
+                    <p>Сценарные и AI-боты, платежи и интеграции.</p>
+                </article>
+
+                <article class="bc-service-item">
+                    <h3>Системы обучения</h3>
+                    <p>LMS, e-learning-платформы, личные кабинеты студентов и преподавателей.</p>
+                </article>
+
+                <article class="bc-service-item">
+                    <h3>Веб-приложения</h3>
+                    <p>Высоконагрузочные порталы, CRM, внутренние сервисы.</p>
+                </article>
+
+                <article class="bc-service-item">
+                    <h3>Блокчейн</h3>
+                    <p>Смарт-контракты, токенизация активов, цифровые паспорта.</p>
+                </article>
+
+                <article class="bc-service-item">
+                    <h3>Консалтинг</h3>
+                    <p>Экспертиза по развитию продуктов и внедрению цифровых процессов.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="bc-services-process bc-animate bc-animate-delay-2">
+        <div class="bc-container">
+            <h2 class="bc-section-title">Как мы работаем</h2>
+            <ol class="bc-process-steps">
+                <li>
+                    <h4>1. Диагностика и цели</h4>
+                    <p>Собираем вводные, формируем гипотезы, фиксируем KPI и ограничения.</p>
+                </li>
+                <li>
+                    <h4>2. Проектирование и дизайн</h4>
+                    <p>Создаём архитектуру, прототипы интерфейсов и согласуем бэклог.</p>
+                </li>
+                <li>
+                    <h4>3. Разработка и тестирование</h4>
+                    <p>Работаем итерациями, подключаем автотесты, проводим приемку вместе с заказчиком.</p>
+                </li>
+                <li>
+                    <h4>4. Внедрение и обучение</h4>
+                    <p>Настраиваем инфраструктуру, проводим миграции, обучаем команды.</p>
+                </li>
+                <li>
+                    <h4>5. Поддержка и развитие</h4>
+                    <p>Следим за SLO, развиваем продукт и помогаем с аналитикой.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="bc-services-cta bc-animate bc-animate-delay-3">
+        <div class="bc-container bc-services-cta-inner">
+            <div class="bc-services-cta-text">
+                <h2>Нужна команда под задачу?</h2>
+                <p>Оставьте заявку — подберём формат сотрудничества и быстро ответим на уточняющие вопросы.</p>
+            </div>
+            <a asp-controller="Home" asp-action="Index" asp-fragment="contact" class="bc-btn bc-btn-primary">Оставить заявку</a>
+        </div>
+    </section>
+</main>

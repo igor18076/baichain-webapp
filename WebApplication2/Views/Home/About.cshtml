@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "О компании BaiChain";
+    ViewBag.MetaDescription = "BaiChain — команда, которая внедряет блокчейн и цифровые решения для бизнеса.";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TestPage = true;
+}
+
+<section class="bc-about-hero bc-animate">
+    <div class="bc-container bc-about-hero-inner">
+        <h1>О компании BaiChain</h1>
+        <p class="bc-about-subtitle">
+            Байкал Блокчейн Консалтинг
+        </p>
+
+        <p class="bc-about-intro">
+            Мы объединяем экспертизу в блокчейне, разработке цифровых продуктов и автоматизации бизнес-процессов, чтобы помогать компаниям уверенно двигаться в сторону цифровой трансформации.
+        </p>
+
+        <a asp-controller="Home" asp-action="Index" asp-fragment="contact" class="bc-btn bc-btn-primary bc-about-cta">
+            Подключить решение
+        </a>
+    </div>
+</section>
+
+<section class="bc-about-mission bc-animate">
+    <div class="bc-container">
+        <h2 class="bc-section-title bc-about-center">Наша миссия</h2>
+        <p class="bc-about-mission-text">
+            Сделать современные цифровые технологии и блокчейн понятными и доступными бизнесу любого масштаба, превращая сложные решения в понятные и измеримые результаты.
+        </p>
+    </div>
+</section>
+
+<section class="bc-values bc-animate">
+    <div class="bc-container">
+        <h2 class="bc-section-title bc-about-center">Наши ценности</h2>
+
+        <div class="bc-values-grid">
+            <article class="bc-value-card">
+                <h3>Ориентация на качество</h3>
+                <p>
+                    Мы уделяем внимание деталям: от архитектуры и безопасности до интерфейса и пользовательского опыта. Для нас важно, чтобы решения работали стабильно и приносили пользу в долгую.
+                </p>
+            </article>
+
+            <article class="bc-value-card">
+                <h3>Ориентация на инновации</h3>
+                <p>
+                    Следим за развитием технологий и применяем их там, где это даёт бизнес-эффект: блокчейн, смарт-контракты, автоматизация процессов, интеграция с существующей инфраструктурой.
+                </p>
+            </article>
+
+            <article class="bc-value-card">
+                <h3>Долгосрочное сотрудничество</h3>
+                <p>
+                    Строим партнёрские отношения, а не разовые проекты. Помогаем развивать и масштабировать решения, поддерживаем команды и остаёмся на связи после завершения внедрения.
+                </p>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<section class="bc-partners bc-animate">
+    <div class="bc-container">
+        <h2 class="bc-section-title bc-about-center">Партнеры</h2>
+        <p class="bc-partners-subtitle">
+            Мы работаем с компаниями, которые разделяют наш подход к качеству и развитию цифровых сервисов.
+        </p>
+
+        <div class="bc-partners-grid">
+            <div class="bc-partner-card">
+                <img src="~/src/logo-baichein.jpg"
+                     alt="Партнёр BaiChain" loading="lazy" decoding="async" />
+            </div>
+            <div class="bc-partner-card bc-partner-placeholder"></div>
+            <div class="bc-partner-card bc-partner-placeholder"></div>
+            <div class="bc-partner-card bc-partner-placeholder"></div>
+        </div>
+    </div>
+</section>

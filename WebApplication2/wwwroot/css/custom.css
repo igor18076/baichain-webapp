@@ -1,0 +1,2235 @@
+﻿/* ========= Общие ========= */
+:root{
+    --bc-primary: #2563eb;
+    --bc-bg: #f9fafb;
+    --bc-surface: #ffffff;
+    --bc-border: #e5e7eb;
+    --bc-text: #111827;
+    --bc-muted: #4b5563;
+    --bc-muted-2: #6b7280;
+    --bc-success: #16a34a;
+    --bc-danger: #dc2626;
+    --bc-shadow: rgba(15, 23, 42, 0.06);
+}
+
+.baichain-body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0;
+    color: var(--bc-text);
+    background: var(--bc-bg);
+}
+
+.bc-container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+}
+
+.bc-section-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 32px;
+}
+
+/* ========= Кнопки ========= */
+
+.bc-btn {
+    border-radius: 999px;
+    padding: 10px 24px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
+}
+
+/* Ripple эффект */
+.bc-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-btn:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* focus style for accessibility */
+.bc-btn:focus-visible {
+    outline: 3px solid rgba(37,99,235,0.18);
+    outline-offset: 2px;
+}
+
+/* Hover анимация */
+.bc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
+}
+
+/* Active анимация */
+.bc-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+    transition: all 0.1s ease;
+}
+
+.bc-btn-small {
+    padding: 8px 18px;
+    background: var(--bc-primary);
+    color: #fff;
+}
+
+.bc-btn-primary {
+    background: linear-gradient(135deg, var(--bc-primary) 0%, #1d4ed8 100%);
+    color: #fff;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.bc-btn-primary:hover,
+.bc-btn-small:hover {
+    filter: brightness(1.1);
+    background-position: 100% 50%;
+}
+
+.bc-btn-primary:active,
+.bc-btn-small:active {
+    filter: brightness(0.95);
+}
+
+/* ========= Header ========= */
+
+.bc-header {
+    background: var(--bc-surface);
+    border-bottom: 1px solid var(--bc-border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.bc-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+/* === BEGIN: стили для логотипа BaiChein === */
+.bc-logo {
+    display: flex;
+    align-items: center;
+}
+
+/* ссылка-обёртка логотипа */
+.bc-logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--bc-primary);
+}
+
+/* картинка логотипа */
+.bc-logo-img {
+    height: 32px; /* можно 36px, если хочется крупнее */
+    width: auto;
+    display: block;
+}
+
+/* текст справа от логотипа (если нужен) */
+.bc-logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+/* по ховеру просто слегка притушим */
+.bc-logo-link:hover {
+    opacity: 0.9;
+}
+/* === END: стили для логотипа BaiChein === */
+
+
+.bc-nav {
+    display: flex;
+    gap: 24px;
+    font-size: 14px;
+}
+
+    .bc-nav a {
+        text-decoration: none;
+        color: var(--bc-muted);
+    }
+
+        .bc-nav a:hover {
+            color: var(--bc-text);
+        }
+
+.bc-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.bc-country {
+    color: var(--bc-muted-2);
+}
+
+.bc-link-text {
+    color: var(--bc-primary);
+    text-decoration: none;
+}
+
+/* ========= Hero ========= */
+
+.bc-hero {
+    padding: 72px 0 64px;
+    background: var(--bc-surface);
+}
+
+.bc-hero-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: center;
+}
+
+.bc-hero h1 {
+    font-size: 42px;
+    line-height: 1.15;
+    margin: 0 0 16px;
+}
+
+.bc-hero-sub {
+    font-size: 18px;
+    color: var(--bc-muted-2);
+}
+
+.bc-hero-visual {
+    flex: 0 0 320px;
+    display: flex;
+    justify-content: center;
+}
+
+/* мягкий blob вместо шара */
+
+.bc-hero-blob {
+    width: 280px;
+    height: 260px;
+    border-radius: 60% 40% 60% 40%;
+    background: linear-gradient(145deg, #eff6ff, #bfdbfe, var(--bc-primary));
+    box-shadow: 0 30px 80px rgba(37, 99, 235, 0.35);
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-hero-blob-inner {
+    position: absolute;
+    inset: 18%;
+    border-radius: 55% 45% 60% 40%;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    opacity: 0.9;
+}
+
+/* ========= Services ========= */
+
+.bc-services {
+    padding: 40px 0 64px;
+    background: var(--bc-bg);
+}
+
+.bc-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.bc-service-card {
+    background: var(--bc-surface);
+    border-radius: 24px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 16px 40px var(--bc-shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 260px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardFadeInUp 0.6s ease-out;
+}
+
+@keyframes cardFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bc-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bc-primary), var(--bc-primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.bc-service-card:hover::before {
+    transform: scaleX(1);
+}
+
+    .bc-service-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+    }
+
+.bc-service-card-main {
+    height: 540px;
+    grid-row: span 2;
+}
+
+.bc-service-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.bc-service-title {
+    font-weight: 500;
+}
+
+.bc-service-arrow {
+    font-size: 20px;
+    color: #9ca3af;
+    display: inline-block;
+    transition: all 0.3s ease;
+    animation: arrowPulse 2s ease-in-out infinite;
+}
+
+@keyframes arrowPulse {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateX(3px);
+        opacity: 1;
+    }
+}
+
+.bc-service-card:hover .bc-service-arrow {
+    animation: arrowSlide 0.5s ease;
+    transform: translateX(5px);
+    color: var(--bc-primary);
+}
+
+@keyframes arrowSlide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(5px);
+    }
+}
+
+.bc-service-image {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .bc-service-image img,
+    .bc-service-icon {
+        width: 100%;
+        height: 160px;
+        object-fit: contain;
+        object-position: center;
+        display: block;
+    }
+
+/* ========= Why ========= */
+
+.bc-why {
+    position: relative;
+    padding: 64px 0 96px;
+    background: var(--bc-surface);
+}
+
+.bc-why-list {
+    border-top: 1px solid var(--bc-border);
+    margin-top: 16px;
+}
+
+.bc-why-item {
+    border-bottom: 1px solid var(--bc-border);
+}
+
+.bc-why-header {
+    display: grid;
+    grid-template-columns: 60px 1fr 24px;
+    align-items: center;
+    padding: 14px 0;
+    font-size: 16px;
+}
+
+.bc-why-number {
+    color: var(--bc-primary);
+    font-weight: 600;
+}
+
+.bc-why-toggle {
+    text-align: right;
+    color: #9ca3af;
+    font-size: 18px;
+}
+
+.bc-why-body {
+    padding: 0 0 16px 60px;
+    font-size: 14px;
+    color: var(--bc-muted-2);
+}
+
+/* мягкое пятно вместо шара снизу блока */
+
+.bc-why-blur {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 360px;
+    height: 180px;
+    background: radial-gradient(circle at 30% 30%, #eff6ff, var(--bc-primary));
+    opacity: 0.45;
+    filter: blur(12px);
+    pointer-events: none;
+}
+
+/* ========= Contact ========= */
+
+.bc-contact {
+    padding: 64px 0 80px;
+    background: var(--bc-bg);
+}
+
+.bc-contact-inner {
+    background: var(--bc-surface);
+    border-radius: 32px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.2fr);
+    gap: 40px;
+    box-shadow: 0 20px 40px var(--bc-shadow);
+}
+
+.bc-contact-text h2 {
+    font-size: 32px;
+    margin: 0 0 16px;
+}
+
+.bc-contact-text p {
+    margin: 0;
+    color: var(--bc-muted);
+}
+
+.bc-contact-form input[type="text"],
+.bc-contact-form input[type="tel"],
+.bc-contact-form input[type="email"] {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--bc-border);
+    padding: 10px 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.bc-form-row {
+    margin-bottom: 12px;
+}
+
+.bc-form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.bc-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    margin: 10px 0 18px;
+    color: var(--bc-muted-2);
+}
+
+    .bc-checkbox input {
+        margin-top: 2px;
+    }
+
+/* ========= Footer ========= */
+
+.bc-footer {
+    background: var(--bc-surface);
+    padding: 48px 0 24px;
+    font-size: 14px;
+    color: var(--bc-muted-2);
+}
+
+.bc-footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+}
+
+.bc-footer-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--bc-primary);
+    letter-spacing: -0.02em;
+}
+
+.bc-footer-social {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.bc-footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--bc-muted-2);
+    transition: all 0.2s ease;
+    background: transparent;
+    border: 1px solid var(--bc-border);
+}
+
+.bc-footer-social a:hover {
+    color: var(--bc-primary);
+    border-color: var(--bc-primary);
+    background: rgba(99, 102, 241, 0.05);
+    transform: translateY(-2px);
+}
+
+.bc-footer-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 32px;
+}
+
+.bc-footer-col h4 {
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bc-text);
+    letter-spacing: -0.01em;
+}
+
+.bc-footer-col a {
+    display: block;
+    margin: 8px 0;
+    color: var(--bc-muted-2);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    line-height: 1.6;
+}
+
+.bc-footer-col a:hover {
+    color: var(--bc-primary);
+}
+
+.bc-footer-col p {
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.bc-footer-bottom {
+    padding-top: 24px;
+}
+
+.bc-footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.bc-footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.bc-footer-bottom-links a {
+    color: var(--bc-muted-2);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    font-size: 13px;
+}
+
+.bc-footer-bottom-links a:hover {
+    color: var(--bc-primary);
+}
+
+.bc-footer-separator {
+    color: var(--bc-muted-2);
+    opacity: 0.5;
+}
+
+/* ========= Адаптив ========= */
+
+@media (max-width: 960px) {
+    .bc-hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bc-hero-visual {
+        align-self: center;
+    }
+
+    .bc-services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bc-contact-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-footer-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 32px;
+    }
+
+    .bc-footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .bc-footer-bottom-content {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-header-inner {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .bc-nav {
+        display: none; /* упрощённо – можно сделать бургер позже */
+    }
+
+    .bc-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-form-row-2col {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-contact-inner {
+        padding: 24px;
+    }
+
+    .bc-footer-columns {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .bc-footer-top {
+        padding-bottom: 24px;
+        margin-bottom: 32px;
+    }
+
+    .bc-footer-bottom-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .bc-footer-separator {
+        display: none;
+    }
+}
+.bc-service-card-main .bc-service-image {
+    margin-top: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bc-input {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--bc-border);
+    padding: 10px 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.bc-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+/* ========= About / О компании ========= */
+
+.bc-about-hero {
+    background: var(--bc-surface);
+    padding: 96px 0 72px;
+    text-align: center;
+    color: var(--bc-text);
+}
+
+.bc-about-hero-inner h1 {
+    font-size: 40px;
+    font-weight: 600;
+    margin: 0 0 16px;
+}
+
+.bc-about-subtitle {
+    font-size: 20px;
+    color: var(--bc-muted);
+    margin: 0 0 32px;
+}
+
+.bc-about-cta {
+    padding: 10px 32px;
+    font-size: 16px;
+}
+
+/* миссия */
+
+.bc-about-mission {
+    padding: 40px 0 80px;
+    background: var(--bc-surface);
+}
+
+.bc-about-center {
+    text-align: center;
+}
+
+.bc-about-mission-text {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    color: var(--bc-muted);
+}
+
+/* ценности */
+
+.bc-values {
+    padding: 16px 0 80px;
+    background: var(--bc-bg);
+}
+
+.bc-values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.bc-value-card {
+    background: var(--bc-surface);
+    border-radius: 20px;
+    padding: 24px 24px 20px;
+    text-align: center;
+    box-shadow: 0 14px 40px var(--bc-shadow);
+    border: 1px solid var(--bc-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardScaleIn 0.6s ease-out;
+}
+
+@keyframes cardScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.bc-value-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.1), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-value-card:hover::after {
+    width: 400px;
+    height: 400px;
+}
+
+.bc-value-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 20px 50px var(--bc-shadow);
+}
+
+    .bc-value-card h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .bc-value-card p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--bc-muted);
+        line-height: 1.5;
+    }
+
+/* партнеры */
+
+.bc-partners {
+    padding: 56px 0 96px;
+    background: var(--bc-surface);
+}
+
+.bc-partners-subtitle {
+    text-align: center;
+    margin: 0 0 32px;
+    font-size: 16px;
+    color: var(--bc-muted-2);
+}
+
+.bc-partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    align-items: center;
+}
+
+.bc-partner-card {
+    background: var(--bc-surface);
+    border-radius: 20px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--bc-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    animation: cardFadeIn 0.6s ease-out;
+}
+
+.bc-partner-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.bc-partner-card:hover::before {
+    opacity: 1;
+}
+
+.bc-partner-card:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 30px var(--bc-shadow);
+    border-color: var(--bc-primary);
+}
+
+.bc-partner-card img {
+    transition: transform 0.4s ease;
+}
+
+.bc-partner-card:hover img {
+    transform: scale(1.1);
+}
+
+    .bc-partner-card img {
+        max-width: 90%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+
+/* серые заглушки для партнёров */
+
+.bc-partner-placeholder {
+    background: var(--bc-border);
+}
+
+/* адаптив */
+
+@media (max-width: 960px) {
+    .bc-values-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .bc-partners-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-about-hero {
+        padding-top: 72px;
+    }
+
+    .bc-about-hero-inner h1 {
+        font-size: 32px;
+    }
+
+    .bc-about-subtitle {
+        font-size: 18px;
+    }
+
+    .bc-values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-partners-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.bc-footer-social {
+    display: flex;
+    gap: 14px;
+}
+
+.bc-social-link {
+    color: #6b7280;
+    transition: color .2s ease;
+}
+
+    .bc-social-link:hover {
+        color: var(--bc-primary);
+    }
+/* ========= Error pages ========= */
+
+.bc-error {
+    padding: 96px 0 96px;
+    background: #f9fafb;
+}
+
+.bc-error-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+}
+
+.bc-error-main {
+    max-width: 520px;
+}
+
+.bc-error-code {
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.bc-error-title {
+    font-size: 28px;
+    margin: 0 0 12px;
+}
+
+.bc-error-text {
+    margin: 0 0 20px;
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.bc-error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* scoped outline button for error pages to avoid global conflicts */
+.bc-error .bc-btn-outline {
+    border-radius: 999px;
+    padding: 10px 24px;
+    border: 1px solid #d1d5db;
+    background: transparent;
+    color: #111827;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.bc-error .bc-btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-error .bc-btn-outline:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.bc-error .bc-btn-outline:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.bc-error .bc-btn-outline:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* визуальная часть с blob-фигурой */
+
+.bc-error-visual {
+    text-align: center;
+}
+
+.bc-error-blob {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 16px;
+    border-radius: 60% 40% 60% 40%;
+    background: radial-gradient(circle at 30% 20%, #eff6ff, #bfdbfe, #2563eb);
+    box-shadow: 0 30px 80px rgba(37, 99, 235, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-error-blob-warning {
+    background: radial-gradient(circle at 30% 20%, #fef3c7, #fbbf24, #f97316);
+}
+
+.bc-error-blob-generic {
+    background: radial-gradient(circle at 30% 20%, #e0f2fe, #c4b5fd, #2563eb);
+}
+
+.bc-error-ghost {
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+}
+
+.bc-error-hint {
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* адаптив */
+
+@media (max-width: 960px) {
+    .bc-error-inner {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .bc-error-visual {
+        order: -1;
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-error {
+        padding: 72px 0 64px;
+    }
+
+    .bc-error-code {
+        font-size: 48px;
+    }
+
+    .bc-error-title {
+        font-size: 22px;
+    }
+
+    .bc-error-blob {
+        width: 220px;
+        height: 220px;
+    }
+}
+.bc-animate {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+    .bc-animate.bc-in-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* небольшие задержки, если нужно ступенчато */
+.bc-animate-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.bc-animate-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.bc-animate-delay-3 {
+    transition-delay: 0.3s;
+}
+
+/* About intro текст, чтобы не забыть */
+.bc-about-intro {
+    max-width: 720px;
+    margin: 0 auto 28px;
+    font-size: 16px;
+    color: var(--bc-muted);
+}
+/* ========= Services page ========= */
+
+.bc-services-hero {
+    padding: 88px 0 56px;
+    background: var(--bc-surface);
+    text-align: center;
+}
+
+.bc-services-hero-inner h1 {
+    font-size: 38px;
+    font-weight: 600;
+    margin: 0 0 16px;
+}
+
+.bc-services-hero-sub {
+    max-width: 720px;
+    margin: 0 auto 28px;
+    font-size: 16px;
+    color: var(--bc-muted);
+}
+
+/* список услуг */
+
+.bc-services-list {
+    padding: 32px 0 64px;
+    background: var(--bc-bg);
+}
+
+.bc-services-list-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.bc-service-item {
+    background: var(--bc-surface);
+    border-radius: 22px;
+    padding: 22px 22px 18px;
+    box-shadow: 0 18px 40px var(--bc-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardSlideInRight 0.6s ease-out;
+}
+
+@keyframes cardSlideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.bc-service-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--bc-primary), var(--bc-primary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.bc-service-item:hover::after {
+    transform: scaleX(1);
+}
+
+.bc-service-item:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 50px var(--bc-shadow);
+}
+
+    .bc-service-item h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .bc-service-item p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--bc-muted);
+    }
+
+    .bc-service-item ul {
+        margin: 4px 0 0;
+        padding-left: 18px;
+        font-size: 13px;
+        color: #6b7280;
+    }
+
+/* процесс */
+
+.bc-services-process {
+    padding: 56px 0 72px;
+    background: var(--bc-surface);
+}
+
+.bc-process-steps {
+    list-style: none;
+    margin: 24px 0 0;
+    padding: 0;
+    counter-reset: step;
+}
+
+    .bc-process-steps li {
+        padding: 16px 0;
+        border-bottom: 1px solid var(--bc-border);
+    }
+
+    .bc-process-steps h4 {
+        margin: 0 0 4px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .bc-process-steps p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--bc-muted-2);
+    }
+
+.bc-services-cta {
+    padding: 48px 0 72px;
+    background: var(--bc-bg);
+}
+
+.bc-services-cta-inner {
+    background: var(--bc-surface);
+    border-radius: 32px;
+    padding: 48px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    box-shadow: 0 20px 40px var(--bc-shadow);
+    border: 1px solid var(--bc-border);
+}
+
+.bc-services-cta-text h2 {
+    margin: 0 0 8px;
+    font-size: 22px;
+}
+
+.bc-services-cta-text p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--bc-muted);
+}
+
+/* адаптив для services */
+
+@media (max-width: 960px) {
+    .bc-services-list-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .bc-services-cta-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 40px 48px;
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-services-hero-inner h1 {
+        font-size: 30px;
+    }
+
+    .bc-services-list-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bc-services-cta-inner {
+        padding: 32px 24px;
+        gap: 20px;
+    }
+}
+.bc-footer-social {
+    display: flex;
+    gap: 14px;
+}
+
+.bc-social-link {
+    color: #6b7280;
+    transition: color .2s ease;
+}
+
+    .bc-social-link:hover {
+        color: var(--bc-primary);
+    }
+/* ========= Error pages ========= */
+
+.bc-error {
+    padding: 96px 0 96px;
+    background: #f9fafb;
+}
+
+.bc-error-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
+}
+
+.bc-error-main {
+    max-width: 520px;
+}
+
+.bc-error-code {
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.bc-error-title {
+    font-size: 28px;
+    margin: 0 0 12px;
+}
+
+.bc-error-text {
+    margin: 0 0 20px;
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.bc-error-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* scoped outline button for error pages to avoid global conflicts */
+.bc-error .bc-btn-outline {
+    border-radius: 999px;
+    padding: 10px 24px;
+    border: 1px solid #d1d5db;
+    background: transparent;
+    color: #111827;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.bc-error .bc-btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-error .bc-btn-outline:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+.bc-error .bc-btn-outline:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.bc-error .bc-btn-outline:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* визуальная часть с blob-фигурой */
+
+.bc-error-visual {
+    text-align: center;
+}
+
+.bc-error-blob {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto 16px;
+    border-radius: 60% 40% 60% 40%;
+    background: radial-gradient(circle at 30% 20%, #eff6ff, #bfdbfe, #2563eb);
+    box-shadow: 0 30px 80px rgba(37, 99, 235, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-error-blob-warning {
+    background: radial-gradient(circle at 30% 20%, #fef3c7, #fbbf24, #f97316);
+}
+
+.bc-error-blob-generic {
+    background: radial-gradient(circle at 30% 20%, #e0f2fe, #c4b5fd, #2563eb);
+}
+
+.bc-error-ghost {
+    font-size: 64px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
+}
+
+.bc-error-hint {
+    margin: 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* адаптив */
+
+@media (max-width: 960px) {
+    .bc-error-inner {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .bc-error-visual {
+        order: -1;
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-error {
+        padding: 72px 0 64px;
+    }
+
+    .bc-error-code {
+        font-size: 48px;
+    }
+
+    .bc-error-title {
+        font-size: 22px;
+    }
+
+    .bc-error-blob {
+        width: 220px;
+        height: 220px;
+    }
+}
+/* ========= EPIC 404 with Oкак-котом ========= */
+
+.bc-error-epic {
+    position: relative;
+    min-height: calc(100vh - 120px); /* примерно минус хедер+футер */
+    background: radial-gradient(circle at top, #020617 0, #020617 40%, #000000 100%);
+    color: #f9fafb;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* лёгкий шум поверх всего */
+.bc-error-epic-noise {
+    pointer-events: none;
+    position: absolute;
+    inset: -50px;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.8'/%3E%3C/svg%3E");
+    mix-blend-mode: soft-light;
+}
+
+/* контент */
+
+.bc-error-epic-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 48px;
+    padding: 96px 24px;
+    align-items: center;
+}
+
+.bc-error-epic-text {
+    max-width: 560px;
+}
+
+/* ГЛИТЧ-КОД 404 */
+
+.bc-error-glitch-wrapper {
+    margin-bottom: 8px;
+}
+
+.bc-error-glitch {
+    position: relative;
+    display: inline-block;
+    font-size: 80px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2563eb;
+    animation: bc-glitch-breath 2.8s ease-in-out infinite;
+}
+
+    .bc-error-glitch::before,
+    .bc-error-glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 0;
+        top: 0;
+        mix-blend-mode: screen;
+        opacity: 0.7;
+    }
+
+    .bc-error-glitch::before {
+        color: #f97316;
+        transform: translate(2px, -1px);
+        animation: bc-glitch-1 2s infinite linear alternate-reverse;
+    }
+
+    .bc-error-glitch::after {
+        color: #22c55e;
+        transform: translate(-2px, 1px);
+        animation: bc-glitch-2 1.6s infinite linear alternate-reverse;
+    }
+
+.bc-error-epic-title {
+    font-size: 36px;
+    margin: 0 0 12px;
+}
+
+.bc-error-epic-sub {
+    margin: 0 0 20px;
+    font-size: 15px;
+    color: #e5e7eb;
+    line-height: 1.8;
+}
+
+.bc-error-epic-hint span {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+}
+
+.bc-error-epic-hint ul {
+    margin: 6px 0 20px;
+    padding-left: 18px;
+    font-size: 14px;
+    color: #cbd5f5;
+}
+
+.bc-error-epic-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* outline-кнопка для epic, scoped специфично */
+.bc-error-epic .bc-btn-outline {
+    border-radius: 999px;
+    padding: 10px 24px;
+    border: 1px solid #374151;
+    background: transparent;
+    color: #e5e7eb;
+    text-decoration: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.bc-error-epic .bc-btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(96, 165, 250, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-error-epic .bc-btn-outline:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+    .bc-error-epic .bc-btn-outline:hover {
+        border-color: #60a5fa;
+        color: #60a5fa;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+    }
+
+.bc-error-epic .bc-btn-outline:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+.bc-error-epic-visual {
+    position: relative;
+    justify-self: center;
+}
+
+.bc-error-epic-orbit {
+    position: absolute;
+    inset: -80px -40px;
+    border-radius: 60% 40% 60% 40%;
+    background: radial-gradient(circle at 20% 0%, rgba(37,99,235,0.4), transparent 55%), radial-gradient(circle at 80% 100%, rgba(56,189,248,0.25), transparent 55%);
+    filter: blur(22px);
+    opacity: 0.8;
+    animation: bc-orbit-pulse 8s ease-in-out infinite alternate;
+}
+
+.bc-error-epic-card {
+    position: relative;
+    width: 320px;
+    height: 480px;
+    border-radius: 36px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.95);
+    transform: rotate(-2deg) translateY(0);
+    transform-origin: 50% 70%;
+    animation: bc-card-float 6s ease-in-out infinite;
+    background: radial-gradient(circle at 50% 15%, #020617 0, #020617 45%, #000 100%);
+}
+
+.bc-error-epic-image {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center top;
+    filter: saturate(1.1);
+}
+
+    /* лёгкий акцент на глазах: затемняем низ */
+
+    .bc-error-epic-image::after {
+        content: "";
+        position: absolute;
+        inset: 40% -10% -10% -10%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 100%);
+    }
+
+.bc-error-epic-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    padding: 0 18px;
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* анимации */
+
+@keyframes bc-glitch-1 {
+    0% {
+        transform: translate(2px,-1px);
+        clip-path: inset(0 0 70% 0);
+    }
+
+    50% {
+        transform: translate(-1px,1px);
+        clip-path: inset(10% 0 40% 0);
+    }
+
+    100% {
+        transform: translate(1px,-2px);
+        clip-path: inset(60% 0 0 0);
+    }
+}
+
+@keyframes bc-glitch-2 {
+    0% {
+        transform: translate(-2px,1px);
+        clip-path: inset(0 0 60% 0);
+    }
+
+    50% {
+        transform: translate(1px,0px);
+        clip-path: inset(20% 0 30% 0);
+    }
+
+    100% {
+        transform: translate(-1px,2px);
+        clip-path: inset(50% 0 0 0);
+    }
+}
+
+@keyframes bc-glitch-breath {
+    0%, 100% {
+        text-shadow: 0 0 18px rgba(37,99,235,0.6);
+    }
+
+    50% {
+        text-shadow: 0 0 24px rgba(59,130,246,0.9);
+    }
+}
+
+@keyframes bc-card-float {
+    0% {
+        transform: rotate(-2deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(-1deg) translateY(-10px);
+    }
+
+    100% {
+        transform: rotate(-2deg) translateY(0);
+    }
+}
+
+@keyframes bc-orbit-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.75;
+    }
+}
+
+/* адаптив */
+
+@media (max-width: 960px) {
+    .bc-error-epic-inner {
+        grid-template-columns: 1fr;
+        padding-top: 88px;
+        padding-bottom: 72px;
+    }
+
+    .bc-error-epic-visual {
+        order: -1;
+    }
+
+    .bc-error-epic-title {
+        font-size: 30px;
+    }
+
+    .bc-error-glitch {
+        font-size: 64px;
+    }
+
+    .bc-error-epic-card {
+        width: 280px;
+        height: 420px;
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-error-epic-inner {
+        padding-top: 72px;
+        padding-bottom: 56px;
+    }
+
+    .bc-error-glitch {
+        font-size: 52px;
+    }
+
+    .bc-error-epic-title {
+        font-size: 24px;
+    }
+
+    .bc-error-epic-hint ul {
+        font-size: 13px;
+    }
+}
+
+
+/* ========= Спасибо / котёнок ========= */
+
+.bc-thanks-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+    .bc-thanks-overlay.is-visible {
+        display: flex;
+    }
+
+.bc-thanks-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.78);
+    backdrop-filter: blur(6px);
+}
+
+.bc-thanks-modal {
+    position: relative;
+    z-index: 1;
+    max-width: 420px;
+    width: 100%;
+    background: var(--bc-surface);
+    border-radius: 28px;
+    padding: 20px 20px 22px;
+    box-shadow: 0 30px 80px rgba(15, 23, 42, 0.65);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: bc-thanks-pop 0.4s ease-out;
+}
+
+.bc-thanks-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+    .bc-thanks-close:hover {
+        color: var(--bc-muted);
+        background: rgba(0, 0, 0, 0.05);
+        transform: rotate(90deg) scale(1.1);
+    }
+
+    .bc-thanks-close:active {
+        transform: rotate(90deg) scale(0.95);
+        transition: all 0.1s ease;
+    }
+
+.bc-thanks-image img {
+    width: 100%;
+    border-radius: 20px;
+    display: block;
+}
+
+.bc-thanks-text h3 {
+    margin: 4px 0 6px;
+    font-size: 18px;
+}
+
+.bc-thanks-text p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: var(--bc-muted);
+    line-height: 1.6;
+}
+
+.bc-thanks-ok {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bc-thanks-ok::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-thanks-ok:active::before {
+    width: 400px;
+    height: 400px;
+}
+
+.bc-thanks-ok:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.bc-thanks-ok:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* анимация появления */
+
+@keyframes bc-thanks-pop {
+    0% {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-thanks-modal {
+        margin: 0 16px;
+        padding: 18px 16px 20px;
+    }
+
+    /* Отключаем видео-фон на маленьких экранах для производительности */
+    .bc-why-video-bg {
+        display: none;
+    }
+}
+
+
+/* уведомления у формы */
+.bc-contact-alert {
+    margin-top: 16px;
+    font-size: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: slideInDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-contact-alert::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: currentColor;
+    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        width: 0;
+    }
+    to {
+        width: 3px;
+    }
+}
+
+.bc-contact-alert-success {
+    color: var(--bc-success);
+    background: rgba(22, 163, 74, 0.1);
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.bc-contact-alert-success::before {
+    background: var(--bc-success);
+}
+
+.bc-contact-alert-error {
+    color: var(--bc-danger);
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.bc-contact-alert-error::before {
+    background: var(--bc-danger);
+}
+
+/* Красивые сообщения об ошибках валидации */
+.text-danger {
+    color: var(--bc-danger) !important;
+    font-size: 13px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(220, 38, 38, 0.08);
+    border-left: 3px solid var(--bc-danger);
+    border-radius: 6px;
+    animation: shakeError 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.text-danger::before {
+    content: '⚠';
+    font-size: 16px;
+    animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+@keyframes shakeError {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-4px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(4px);
+    }
+}
+
+@keyframes pulseIcon {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Анимация для полей с ошибками */
+.bc-input:invalid,
+.bc-input.error-field {
+    border-color: var(--bc-danger) !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+    animation: fieldError 0.3s ease;
+}
+
+@keyframes fieldError {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-3px);
+    }
+    75% {
+        transform: translateX(3px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Номера в кружках */
+.bc-why-number-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #2563eb15;
+    color: #2563eb;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+/* Стрелка */
+.bc-why-toggle {
+    font-size: 18px;
+    color: #9ca3af;
+    transition: transform 0.25s ease;
+}
+
+/* Открытый пункт — стрелка вниз */
+.bc-why-item.bc-why-item-open .bc-why-toggle {
+    transform: rotate(90deg);
+    color: #2563eb;
+}
+
+/* Хедер кликабелен */
+.bc-why-header {
+    cursor: pointer;
+}
+
+/* плавное открытие */
+.bc-why-body {
+    max-height: 0; /* изначально всё скрыто */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    /* === animated video background === */
+}
+
+/*.bc-why-video {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 420px;
+        height: 320px;
+        object-fit: cover;
+        opacity: 0.32;
+        border-radius: 40px;
+        filter: blur(6px);
+        pointer-events: none;
+}*/
+
+/* === VIDEO BG for "Почему мы" === */
+.bc-why {
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-why-video-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+    .bc-why-video-bg video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: blur(12px) brightness(0.75);
+    }
+
+.bc-why-video-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient( circle at 60% 40%, rgba(255,255,255,0.2), rgba(0,0,0,0.4) );
+    backdrop-filter: blur(6px);
+}
+
+/* Контент поверх видео */
+.bc-why .bc-container {
+    position: relative;
+    z-index: 2;
+}

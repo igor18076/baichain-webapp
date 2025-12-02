@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Ошибка сервера – BaiChain";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TestPage = true;
+}
+
+<section class="bc-error bc-animate">
+    <div class="bc-container bc-error-inner">
+        <div class="bc-error-main">
+            <div class="bc-error-code">500</div>
+            <h1 class="bc-error-title">Что-то пошло не так</h1>
+            <p class="bc-error-text">
+                На сервере произошла неисправимая ошибка. Мы уже работаем над её устранением.
+                Попробуйте обновить страницу немного позже или вернуться на главную.
+            </p>
+
+            <div class="bc-error-actions">
+                <a href="@Url.Action("Index", "Home")" class="bc-btn bc-btn-primary">
+                    На главную
+                </a>
+                <button type="button" class="bc-btn bc-btn-outline" onclick="location.reload();">
+                    Обновить страницу
+                </button>
+            </div>
+        </div>
+
+        <div class="bc-error-visual">
+            <div class="bc-error-blob bc-error-blob-warning">
+                <span class="bc-error-ghost">!</span>
+            </div>
+            <p class="bc-error-hint">
+                Если ошибка повторяется, напишите нам — мы обязательно разберёмся.
+            </p>
+        </div>
+    </div>
+</section>

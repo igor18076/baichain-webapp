@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "404 – Окак…";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.TestPage = true;
+}
+
+<section class="bc-error-epic">
+    <div class="bc-error-epic-noise"></div>
+
+    <div class="bc-container bc-error-epic-inner">
+        <div class="bc-error-epic-text">
+            <div class="bc-error-glitch-wrapper">
+                <span class="bc-error-glitch" data-text="404">404</span>
+            </div>
+
+            <h1 class="bc-error-epic-title">Окак… ты потерялся</h1>
+
+            <p class="bc-error-epic-sub">
+                Эта страница ушла в тёмный продакшн и больше не вернулась.<br />
+                Наш кот-ревьюер уже посмотрел на твой запрос и молча его отклонил.
+            </p>
+
+            <div class="bc-error-epic-hint">
+                <span>Варианты действий:</span>
+                <ul>
+                    <li>вернуться на главную и сделать вид, что ничего не было;</li>
+                    <li>заглянуть в наши услуги и найти что-то полезное;</li>
+                    <li>или просто ещё минуту смотреть в глаза коту.</li>
+                </ul>
+            </div>
+
+            <div class="bc-error-epic-actions">
+                <a href="@Url.Action("Index", "Home")" class="bc-btn bc-btn-primary">
+                    На главную
+                </a>
+                <a href="@Url.Action("Services", "Home")" class="bc-btn bc-btn-outline">
+                    Посмотреть услуги
+                </a>
+            </div>
+        </div>
+
+        <div class="bc-error-epic-visual">
+            <div class="bc-error-epic-orbit"></div>
+            <div class="bc-error-epic-card">
+                <div class="bc-error-epic-image"
+                     style="background-image:url('@Url.Content("~/src/errorCat.jpg")');">
+                </div>
+                <div class="bc-error-epic-caption">
+                    <span>Если кот давно смотрит на тебя — пора вернуться на нормальные страницы.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

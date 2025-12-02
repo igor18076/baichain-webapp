@@ -1,0 +1,1349 @@
+/* ============================================
+   Blockchain Platform Page Styles
+   Современный технологический дизайн с Web3 элементами
+   ============================================ */
+
+:root {
+    --bcp-primary: #6366f1;
+    --bcp-primary-dark: #4f46e5;
+    --bcp-primary-light: #818cf8;
+    --bcp-secondary: #8b5cf6;
+    --bcp-accent: #06b6d4;
+    --bcp-text: #1e293b;
+    --bcp-text-light: #64748b;
+    --bcp-bg: #ffffff;
+    --bcp-bg-light: #f8fafc;
+    --bcp-bg-dark: #0f172a;
+    --bcp-border: #e2e8f0;
+    --bcp-shadow: rgba(99, 102, 241, 0.1);
+    --bcp-shadow-lg: rgba(99, 102, 241, 0.15);
+    --bcp-glow: rgba(99, 102, 241, 0.3);
+}
+
+/* Dark theme support */
+body[data-theme="dark"] {
+    --bcp-text: #e2e8f0;
+    --bcp-text-light: #94a3b8;
+    --bcp-bg: #0f172a;
+    --bcp-bg-light: #1e293b;
+    --bcp-border: #334155;
+    --bcp-shadow: rgba(99, 102, 241, 0.2);
+    --bcp-shadow-lg: rgba(99, 102, 241, 0.25);
+}
+
+body[data-theme="dark"] .bc-platform-problem-card,
+body[data-theme="dark"] .bc-platform-solution-card,
+body[data-theme="dark"] .bc-platform-benefit-card,
+body[data-theme="dark"] .bc-platform-usecase-card,
+body[data-theme="dark"] .bc-platform-case-card,
+body[data-theme="dark"] .bc-platform-security-item,
+body[data-theme="dark"] .bc-platform-timeline-content,
+body[data-theme="dark"] .bc-platform-contact-form-wrapper {
+    background: var(--bcp-bg-light);
+    border-color: var(--bcp-border);
+}
+
+body[data-theme="dark"] .bc-platform-problem,
+body[data-theme="dark"] .bc-platform-how,
+body[data-theme="dark"] .bc-platform-benefits,
+body[data-theme="dark"] .bc-platform-usecases,
+body[data-theme="dark"] .bc-platform-security {
+    background: var(--bcp-bg);
+}
+
+body[data-theme="dark"] .bc-platform-contact {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+}
+
+.bc-platform-main {
+    background: var(--bcp-bg);
+    color: var(--bcp-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    line-height: 1.6;
+}
+
+.bc-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+
+.bc-platform-hero {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.bc-platform-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.bc-platform-hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.7) 0%, rgba(118, 75, 162, 0.7) 100%);
+    z-index: 0; /*sadasdasdasdadasda*/
+}
+
+.bc-platform-hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: blur(2px);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.bc-platform-hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 255, 255, 0.03) 2px, rgba(255, 255, 255, 0.03) 4px);
+    background-size: 40px 40px;
+    animation: patternMove 20s linear infinite;
+    z-index: 2;
+}
+
+@keyframes patternMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 40px 40px; }
+}
+
+.bc-platform-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bc-platform-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.bc-platform-badge-icon {
+    font-size: 16px;
+    display: inline-block;
+    animation: iconBounce 2s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-3px) rotate(10deg);
+    }
+}
+
+.bc-platform-hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 24px;
+    letter-spacing: -0.02em;
+}
+
+.bc-platform-hero-subtitle {
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 0 0 40px;
+    opacity: 0.95;
+    font-weight: 400;
+}
+
+.bc-platform-hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bc-btn-large {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.bc-btn-large::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-btn-large:active::before {
+    width: 400px;
+    height: 400px;
+}
+
+.bc-btn-large:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+}
+
+.bc-btn-large:active {
+    transform: translateY(-1px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+.bc-btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(0);
+}
+
+.bc-btn-secondary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.bc-btn-secondary:hover::before {
+    left: 100%;
+}
+
+.bc-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+}
+
+.bc-btn-secondary:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* ============================================
+   Section Styles
+   ============================================ */
+
+.bc-platform-section {
+    padding: 100px 0;
+}
+
+.bc-platform-section-header {
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.bc-platform-section-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--bcp-text);
+    letter-spacing: -0.02em;
+}
+
+.bc-platform-section-subtitle {
+    font-size: 20px;
+    color: var(--bcp-text-light);
+    margin: 0;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   Problem Section
+   ============================================ */
+
+.bc-platform-problem {
+    background: var(--bcp-bg-light);
+}
+
+.bc-platform-problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.bc-platform-problem-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardFadeIn 0.6s ease-out;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bc-platform-problem-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent);
+    transition: left 0.5s;
+}
+
+.bc-platform-problem-card:hover::after {
+    left: 100%;
+}
+
+.bc-platform-problem-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 32px rgba(99, 102, 241, 0.2);
+    border-color: var(--bcp-primary-light);
+}
+
+.bc-platform-problem-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: inline-block;
+    animation: iconFloat 3s ease-in-out infinite;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-8px) rotate(5deg);
+    }
+}
+
+.bc-platform-problem-card:hover .bc-platform-problem-icon {
+    animation: iconBounce 0.6s ease;
+    transform: scale(1.15);
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: scale(1) translateY(0);
+    }
+    50% {
+        transform: scale(1.15) translateY(-10px);
+    }
+}
+
+.bc-platform-problem-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--bcp-text);
+}
+
+.bc-platform-problem-card p {
+    margin: 0;
+    color: var(--bcp-text-light);
+    line-height: 1.6;
+}
+
+/* ============================================
+   Solution Section
+   ============================================ */
+
+.bc-platform-solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+.bc-platform-solution-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardSlideIn 0.6s ease-out;
+}
+
+@keyframes cardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.bc-platform-solution-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--bcp-primary), var(--bcp-secondary));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.bc-platform-solution-card:hover::before {
+    transform: scaleX(1);
+}
+
+.bc-platform-solution-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 24px 48px var(--bcp-shadow-lg);
+    border-color: var(--bcp-primary-light);
+}
+
+.bc-platform-solution-card-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 24px;
+    color: var(--bcp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+    }
+}
+
+.bc-platform-solution-card:hover .bc-platform-solution-card-icon {
+    transform: rotate(5deg) scale(1.1);
+    animation: iconRotate 0.6s ease;
+}
+
+@keyframes iconRotate {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1.1);
+    }
+}
+
+.bc-platform-solution-card-icon::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--bcp-primary), var(--bcp-secondary));
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.bc-platform-solution-card:hover .bc-platform-solution-card-icon::before {
+    opacity: 0.1;
+}
+
+.bc-platform-solution-card-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.bc-platform-solution-card:hover .bc-platform-solution-card-icon svg {
+    stroke-width: 2.5;
+    filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+}
+
+.bc-platform-solution-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--bcp-text);
+}
+
+.bc-platform-solution-card p {
+    margin: 0;
+    color: var(--bcp-text-light);
+    line-height: 1.7;
+}
+
+/* ============================================
+   How It Works (Timeline)
+   ============================================ */
+
+.bc-platform-how {
+    background: var(--bcp-bg-light);
+}
+
+.bc-platform-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 40px;
+}
+
+.bc-platform-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--bcp-primary), var(--bcp-secondary));
+}
+
+.bc-platform-timeline-item {
+    position: relative;
+    margin-bottom: 48px;
+    padding-left: 60px;
+}
+
+.bc-platform-timeline-number {
+    position: absolute;
+    left: -40px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--bcp-primary), var(--bcp-secondary));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 4px 12px var(--bcp-shadow);
+    z-index: 1;
+}
+
+.bc-platform-timeline-content {
+    background: white;
+    padding: 24px 32px;
+    border-radius: 12px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.bc-platform-timeline-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: var(--bcp-text);
+}
+
+.bc-platform-timeline-content p {
+    margin: 0;
+    color: var(--bcp-text-light);
+    line-height: 1.6;
+}
+
+/* ============================================
+   Technologies Section
+   ============================================ */
+
+.bc-platform-tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.bc-platform-tech-item {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--bcp-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardFadeIn 0.6s ease-out;
+}
+
+.bc-platform-tech-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--bcp-primary), var(--bcp-secondary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.bc-platform-tech-item:hover::after {
+    transform: scaleX(1);
+}
+
+.bc-platform-tech-item:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 24px var(--bcp-shadow);
+    border-color: var(--bcp-primary-light);
+}
+
+.bc-platform-tech-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--bcp-primary);
+    margin-bottom: 8px;
+}
+
+.bc-platform-tech-desc {
+    font-size: 14px;
+    color: var(--bcp-text-light);
+    line-height: 1.5;
+}
+
+/* ============================================
+   Benefits Section
+   ============================================ */
+
+.bc-platform-benefits {
+    background: var(--bcp-bg-light);
+}
+
+.bc-platform-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.bc-platform-benefit-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: cardZoomIn 0.6s ease-out;
+}
+
+@keyframes cardZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.bc-platform-benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1), transparent);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-platform-benefit-card:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.bc-platform-benefit-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 16px 32px var(--bcp-shadow-lg);
+}
+
+.bc-platform-benefit-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: inline-block;
+    animation: iconSpin 4s linear infinite;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+@keyframes iconSpin {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        transform: rotate(90deg) scale(1.1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1);
+    }
+    75% {
+        transform: rotate(270deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.bc-platform-benefit-card:hover .bc-platform-benefit-icon {
+    animation: iconZoom 0.5s ease;
+    transform: scale(1.3) rotate(360deg);
+}
+
+@keyframes iconZoom {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1.3) rotate(360deg);
+    }
+}
+
+.bc-platform-benefit-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--bcp-text);
+}
+
+.bc-platform-benefit-card p {
+    margin: 0;
+    color: var(--bcp-text-light);
+    line-height: 1.6;
+}
+
+/* ============================================
+   Market Section
+   ============================================ */
+
+.bc-platform-market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+}
+
+.bc-platform-market-stat-large {
+    grid-column: span 2;
+    justify-self: center;
+    max-width: 500px;
+}
+
+@media (max-width: 768px) {
+    .bc-platform-market-stat-large {
+        grid-column: span 1;
+        max-width: 100%;
+    }
+}
+
+.bc-platform-market-stat {
+    text-align: center;
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    border-radius: 16px;
+    border: 1px solid var(--bcp-border);
+}
+
+.bc-platform-market-stat-large {
+    grid-column: span 4;
+    background: linear-gradient(135deg, var(--bcp-primary), var(--bcp-secondary));
+    color: white;
+}
+
+.bc-platform-market-stat-large .bc-platform-market-number,
+.bc-platform-market-stat-large .bc-platform-market-label {
+    color: white;
+}
+
+.bc-platform-market-number {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--bcp-primary);
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.bc-platform-market-label {
+    font-size: 16px;
+    color: var(--bcp-text-light);
+    font-weight: 500;
+}
+
+/* ============================================
+   Use Cases Section
+   ============================================ */
+
+.bc-platform-usecases {
+    background: var(--bcp-bg-light);
+}
+
+.bc-platform-usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+.bc-platform-usecase-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardFadeIn 0.6s ease-out;
+}
+
+.bc-platform-usecase-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.05), transparent);
+    transform: scale(0);
+    transition: transform 0.6s ease;
+}
+
+.bc-platform-usecase-card:hover::before {
+    transform: scale(1);
+}
+
+.bc-platform-usecase-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 16px 32px var(--bcp-shadow-lg);
+    border-color: var(--bcp-primary-light);
+}
+
+.bc-platform-usecase-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--bcp-text);
+}
+
+.bc-platform-usecase-card p {
+    margin: 0;
+    color: var(--bcp-text-light);
+    line-height: 1.6;
+}
+
+/* ============================================
+   Cases Section
+   ============================================ */
+
+.bc-platform-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 32px;
+}
+
+.bc-platform-case-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardRotateIn 0.6s ease-out;
+}
+
+@keyframes cardRotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-5deg) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.bc-platform-case-card:hover {
+    transform: translateY(-10px) rotate(1deg) scale(1.03);
+    box-shadow: 0 24px 48px var(--bcp-shadow-lg);
+}
+
+.bc-platform-case-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: inline-block;
+    animation: iconWiggle 2s ease-in-out infinite;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+}
+
+@keyframes iconWiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+}
+
+.bc-platform-case-card:hover .bc-platform-case-icon {
+    animation: iconShake 0.5s ease;
+    transform: scale(1.2);
+}
+
+@keyframes iconShake {
+    0%, 100% {
+        transform: translateX(0) scale(1.2);
+    }
+    25% {
+        transform: translateX(-5px) scale(1.2);
+    }
+    75% {
+        transform: translateX(5px) scale(1.2);
+    }
+}
+
+.bc-platform-case-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--bcp-text);
+}
+
+.bc-platform-case-card p {
+    margin: 0;
+    color: var(--bcp-text-light);
+    line-height: 1.7;
+}
+
+/* ============================================
+   Security Section
+   ============================================ */
+
+.bc-platform-security {
+    background: var(--bcp-bg-light);
+}
+
+.bc-platform-security-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+@media (max-width: 960px) {
+    .bc-platform-security-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .bc-platform-security-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Центрирование конкретных карточек */
+.bc-platform-card-centered {
+    grid-column: span 2;
+    justify-self: right;
+    max-width: 300px;
+}
+
+@media (max-width: 768px) {
+    .bc-platform-card-centered {
+        grid-column: span 1;
+        max-width: 100%;
+    }
+}
+
+.bc-platform-security-item {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    animation: cardBounceIn 0.6s ease-out;
+}
+
+@keyframes cardBounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) scale(0.8);
+    }
+    60% {
+        transform: translateY(-10px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.bc-platform-security-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--bcp-primary), var(--bcp-secondary));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.bc-platform-security-item:hover::after {
+    opacity: 1;
+}
+
+.bc-platform-security-item:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 16px 32px var(--bcp-shadow-lg);
+}
+
+.bc-platform-security-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: inline-block;
+    animation: iconGlow 2s ease-in-out infinite;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.3));
+}
+
+@keyframes iconGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.3));
+        transform: scale(1);
+    }
+    50% {
+        filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.6));
+        transform: scale(1.05);
+    }
+}
+
+.bc-platform-security-item:hover .bc-platform-security-icon {
+    animation: iconPulseGlow 0.6s ease;
+    transform: scale(1.25);
+    filter: drop-shadow(0 0 16px rgba(99, 102, 241, 0.8));
+}
+
+@keyframes iconPulseGlow {
+    0% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.3));
+    }
+    50% {
+        transform: scale(1.3);
+        filter: drop-shadow(0 0 20px rgba(99, 102, 241, 1));
+    }
+    100% {
+        transform: scale(1.25);
+        filter: drop-shadow(0 0 16px rgba(99, 102, 241, 0.8));
+    }
+}
+
+.bc-platform-security-item h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 12px;
+    color: var(--bcp-text);
+}
+
+.bc-platform-security-item p {
+    margin: 0;
+    color: var(--bcp-text-light);
+    line-height: 1.6;
+}
+
+/* ============================================
+   Contact Section
+   ============================================ */
+
+.bc-platform-contact {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+}
+
+.bc-platform-contact-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.bc-platform-contact-content {
+    padding-top: 20px;
+}
+
+.bc-platform-contact-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: var(--bcp-text);
+    letter-spacing: -0.02em;
+}
+
+.bc-platform-contact-subtitle {
+    font-size: 18px;
+    color: var(--bcp-text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.bc-platform-contact-form-wrapper {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--bcp-border);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.bc-platform-form-row {
+    margin-bottom: 20px;
+}
+
+.bc-platform-input,
+.bc-platform-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--bcp-border);
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.bc-platform-input:focus,
+.bc-platform-textarea:focus {
+    outline: none;
+    border-color: var(--bcp-primary);
+    box-shadow: 0 0 0 3px var(--bcp-shadow);
+}
+
+.bc-platform-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.bc-platform-submit {
+    width: 100%;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, var(--bcp-primary) 0%, var(--bcp-secondary) 100%);
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.bc-platform-submit::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.bc-platform-submit:active::before {
+    width: 500px;
+    height: 500px;
+}
+
+.bc-platform-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    background-position: 100% 50%;
+}
+
+.bc-platform-submit:active {
+    transform: translateY(0);
+    transition: all 0.1s ease;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+
+@media (max-width: 1024px) {
+    .bc-platform-hero-title {
+        font-size: 40px;
+    }
+
+    .bc-platform-section-title {
+        font-size: 36px;
+    }
+
+    .bc-platform-contact-inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .bc-platform-hero {
+        min-height: 80vh;
+        padding: 80px 0 60px;
+    }
+
+    .bc-platform-hero-title {
+        font-size: 32px;
+    }
+
+    .bc-platform-hero-subtitle {
+        font-size: 18px;
+    }
+
+    .bc-platform-hero-actions {
+        flex-direction: column;
+    }
+
+    .bc-platform-hero-actions .bc-btn {
+        width: 100%;
+    }
+
+    .bc-platform-section {
+        padding: 60px 0;
+    }
+
+    .bc-platform-section-title {
+        font-size: 28px;
+    }
+
+    .bc-platform-section-subtitle {
+        font-size: 18px;
+    }
+
+    .bc-platform-timeline {
+        padding-left: 30px;
+    }
+
+    .bc-platform-timeline-item {
+        padding-left: 50px;
+    }
+
+    .bc-platform-timeline-number {
+        width: 32px;
+        height: 32px;
+        left: -30px;
+        font-size: 16px;
+    }
+
+    .bc-platform-market-stat-large {
+        grid-column: span 1;
+    }
+
+    .bc-platform-contact-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bc-container {
+        padding: 0 16px;
+    }
+
+    .bc-platform-hero-title {
+        font-size: 24px;
+    }
+
+    .bc-platform-section-title {
+        font-size: 24px;
+    }
+
+    .bc-platform-problem-grid,
+    .bc-platform-solution-grid,
+    .bc-platform-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+}
+

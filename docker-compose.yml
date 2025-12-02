@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  webapp:
+    build:
+      context: ./WebApplication2
+      dockerfile: Dockerfile
+    container_name: baichain-webapp
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - Smtp__Host=${SMTP_HOST}
+      - Smtp__Port=${SMTP_PORT:-587}
+      - Smtp__UseStartTls=${SMTP_USE_STARTTLS:-true}
+      - Smtp__Username=${SMTP_USERNAME}
+      - Smtp__Password=${SMTP_PASSWORD}
+      - Smtp__FromAddress=${SMTP_FROM_ADDRESS:-order@baichein.ru}
+      - Smtp__FromDisplayName=${SMTP_FROM_DISPLAY_NAME:-BaiChain команда}
+    volumes:
+      - ./logs:/app/logs
+      - ./app_data:/app/App_Data
+    networks:
+      - baichain-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  baichain-network:
+    driver: bridge
+
