@@ -4,7 +4,7 @@
 # ============================================
 
 # ARG для параметризации сборки
-ARG DOTNET_VERSION=8.0
+ARG DOTNET_VERSION=10.0
 ARG PROJECT_NAME=WebApplication2
 
 # ============================================
@@ -17,10 +17,11 @@ ARG PROJECT_NAME
 WORKDIR /src
 
 # Копируем только файлы проектов для максимального кеширования
-COPY ["${PROJECT_NAME}/${PROJECT_NAME}.csproj", "${PROJECT_NAME}/"]
+# При сборке из директории проекта файл находится в корне контекста
+COPY ["${PROJECT_NAME}.csproj", "./"]
 
 # Восстанавливаем зависимости
-RUN dotnet restore "${PROJECT_NAME}/${PROJECT_NAME}.csproj"
+RUN dotnet restore "${PROJECT_NAME}.csproj"
 
 # ============================================
 # Stage 2: Build and Publish
@@ -32,19 +33,11 @@ ARG PROJECT_NAME
 # Копируем остальные файлы проекта
 COPY . .
 
-WORKDIR "/src/${PROJECT_NAME}"
+WORKDIR /src
 
-# Сборка проекта в Release режиме без восстановления
-RUN dotnet build "${PROJECT_NAME}.csproj" \
-    -c Release \
-    --no-restore \
-    -o /app/build
-
-# Публикация проекта
+# Публикация проекта (включает сборку и восстановление)
 RUN dotnet publish "${PROJECT_NAME}.csproj" \
     -c Release \
-    --no-restore \
-    --no-build \
     -o /app/publish \
     /p:UseAppHost=false
 
@@ -62,18 +55,25 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Создание non-root пользователя для безопасности
-RUN groupadd -r appuser && \
-    useradd -r -g appuser -u 1000 appuser && \
+# Используем существующего пользователя или создаем нового
+RUN if id -u 1000 >/dev/null 2>&1; then \
+        EXISTING_USER=$(id -nu 1000); \
+        groupadd -r appuser 2>/dev/null || true; \
+        usermod -g appuser $EXISTING_USER 2>/dev/null || true; \
+    else \
+        groupadd -r appuser && \
+        useradd -r -g appuser -u 1000 appuser; \
+    fi && \
     mkdir -p /app && \
-    chown -R appuser:appuser /app
+    chown -R 1000:1000 /app
 
 WORKDIR /app
 
 # Копирование опубликованных файлов из этапа build
-COPY --from=build --chown=appuser:appuser /app/publish .
+COPY --from=build --chown=1000:1000 /app/publish .
 
-# Переключение на non-root пользователя
-USER appuser
+# Переключение на non-root пользователя (UID 1000)
+USER 1000
 
 # Настройка переменных окружения
 ENV ASPNETCORE_URLS=http://+:8080 \

@@ -58,7 +58,12 @@ namespace WebApplication2
 
             app.UseForwardedHeaders();
             app.UseResponseCompression();
-            app.UseHttpsRedirection();
+            
+            // Отключаем HTTPS редирект в контейнерах и при отсутствии HTTPS
+            if (app.Environment.IsDevelopment() || !string.IsNullOrEmpty(builder.Configuration["ASPNETCORE_HTTPS_PORT"]))
+            {
+                app.UseHttpsRedirection();
+            }
 
             app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
