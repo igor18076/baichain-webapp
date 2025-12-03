@@ -38,7 +38,8 @@ body[data-theme="dark"] .bc-platform-usecase-card,
 body[data-theme="dark"] .bc-platform-case-card,
 body[data-theme="dark"] .bc-platform-security-item,
 body[data-theme="dark"] .bc-platform-timeline-content,
-body[data-theme="dark"] .bc-platform-contact-form-wrapper {
+body[data-theme="dark"] .bc-platform-contact-form-wrapper,
+body[data-theme="dark"] .bc-platform-support-content {
     background: var(--bcp-bg-light);
     border-color: var(--bcp-border);
 }
@@ -51,7 +52,8 @@ body[data-theme="dark"] .bc-platform-security {
     background: var(--bcp-bg);
 }
 
-body[data-theme="dark"] .bc-platform-contact {
+body[data-theme="dark"] .bc-platform-contact,
+body[data-theme="dark"] .bc-platform-support {
     background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
 }
 
