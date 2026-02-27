@@ -86,6 +86,10 @@ appsettings.*.Secrets.json
 **/appsettings.*.Local.json
 **/appsettings.*.Secrets.json
 
+# ВАЖНО: Если вы храните пароли в appsettings.json, добавьте его в .gitignore
+# Раскомментируйте следующую строку, чтобы исключить appsettings.json из репозитория:
+# **/appsettings.json
+
 # Docker
 .dockerignore
 
